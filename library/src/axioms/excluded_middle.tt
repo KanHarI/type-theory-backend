@@ -1,0 +1,6 @@
+isProp: \forall P \in U -> U
+isProp = \forall x \in P. \forall y \in P.  Eq x y
+
+!Axiom ExcludedMiddle: \forall A \in U. isProp A -> ((A -> 0) -> 0) -> A
+
+LEM := ExcludedMiddle
