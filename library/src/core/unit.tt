@@ -1,4 +1,4 @@
-!Builtin unit: Unit
+!Axiom unit: Unit
 
 unitRec: \forall C in U_0. C -> Unit -> C
 unitRec C c u = c

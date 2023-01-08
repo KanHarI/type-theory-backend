@@ -1,2 +1,5 @@
+# Lowercase id - the identity function, does nothing
 id: \forall A in U_0. A -> A
 id A x = x
+
+!Axiom refl: \forall A in U_0. \forall x in A. Eq A x x
