@@ -1,0 +1,1 @@
+!Builtin AOC: \forall R \in U. \forall f \in R. \exists! x \in dom(f). \forall y \in dom(f). f(x) = f(y)

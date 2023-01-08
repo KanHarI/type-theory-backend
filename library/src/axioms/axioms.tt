@@ -1,5 +1,0 @@
-# The axioms that are not encoded into the inference rules are constructed.
-# Lets hope classical logic + ZFC is consistent
-
-# Syntaxtic sugar
-em = ExcludedMiddle

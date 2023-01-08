@@ -1,0 +1,2 @@
+id: \forall A in U_0. A -> A
+id A x = x
