@@ -1,0 +1,2 @@
+!Axiom z: Nat;
+!Axiom succ: Nat -> Nat;
