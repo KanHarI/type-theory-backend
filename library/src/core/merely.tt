@@ -1,0 +1,2 @@
+!Axiom merely_lift: \forall A in U_0. A -> Merely A;
+!Axiom merely_equality: \forall A in U_0. \forall x in Merely A. \forall y in Merely A. x = y -> x = y;
