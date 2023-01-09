@@ -1,2 +1,3 @@
 # The type Void contains no elements
-Void := 0
+
+# TODO: define recVoid
