@@ -1,9 +1,7 @@
-!Import .merely
-
 # See the HoTT book
 # https://hott.github.io/book/hott-online-1353-g16a4bfa.pdf
 # p. 131, section 3.8 "Sets and logic" -> "The axiom of choice"
 
 !Axiom AOC: \forall X in U_0. \forall A in (X -> U_0). \forall P in (\forall x in X. A x -> U_0).
-    (\forall x in X. Merely (\exists a in A x. P x a)) ->
-    Merely (\exists g in (\forall x in X. A x). \forall x in X. P x (g x));
+    (\forall x in X. \merely (\exists a in A x. P x a)) ->
+    \merely (\exists g in (\forall x in X. A x). \forall x in X. P x (g x));
