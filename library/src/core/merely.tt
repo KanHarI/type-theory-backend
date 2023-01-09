@@ -1,2 +1,6 @@
+# See the HoTT book
+# https://hott.github.io/book/hott-online-1353-g16a4bfa.pdf
+# section 3.7 "Sets and logic" -> "Propositional truncation"
+
 !Axiom merely_lift: \forall A in U_0. A -> Merely A;
 !Axiom merely_equality: \forall A in U_0. \forall x in Merely A. \forall y in Merely A. x = y -> x = y;
