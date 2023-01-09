@@ -7,9 +7,9 @@ prodAp A B C f x y = f (prodCons x y);
 
 # Projection from a pair / product
 pr1: \forall A in U_0. \forall B in U_0. (A, B) -> A;
-pr1 A B p = productRec A B A (\x in A. \y in B. x) p;
+pr1 A B p = productRec A B A (\lambda x in A. \lambda y in B. x) p;
 
 pr2: \forall A in U_0. \forall B in U_0. (A, B) -> B;
-pr2 A B p = productRec A B B (\x in A. \y in B. y) p;
+pr2 A B p = productRec A B B (\lambda x in A. \lambda y in B. y) p;
 
 !Axiom prodUniq: \forall A in U_0. \forall B in U_0. \forall x in (A, B). Eq (A, B) (prodCons (pr1 x) (pr2 x)) x;
