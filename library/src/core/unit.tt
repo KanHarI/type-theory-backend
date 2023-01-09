@@ -1,5 +1,5 @@
 # Baked into type checker, no need to define axiom
 # !Axiom unit: Unit
 
-unitRec: \forall C in U_0. C -> Unit -> C
-unitRec C c u = c
+unitRec: \forall C in U_0. C -> Unit -> C;
+unitRec C c u = c;

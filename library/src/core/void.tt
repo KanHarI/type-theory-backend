@@ -3,4 +3,4 @@
 
 # ex falso quodlibet
 # Contradiction is a proof of anything
-voidRed: \forall C in U_0. Void -> C
+voidRed: \forall C in U_0. Void -> C;
