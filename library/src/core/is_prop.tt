@@ -6,5 +6,5 @@
 # https://hott.github.io/book/hott-online-1353-g16a4bfa.pdf
 # section 3.2, "Sets and logic" -> "Propositions as types?"
 
-isProp: \forall P \in U_0. U_0
-isProp P = \forall x in P. \forall y in P.  Eq P x y
+isProp: \forall P \in U_0. U_0;
+isProp P = \forall x in P. \forall y in P.  Eq P x y;

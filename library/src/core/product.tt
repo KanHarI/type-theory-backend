@@ -1,16 +1,16 @@
-!Builtin prodRec: \forall A in U_0. \forall B in U_0. \forall C in U_0. (A -> B -> C) -> (A, B) -> C
-!Builtin prodCons: \forall A in U_0. \forall B in U_0. A -> B -> (A, B)
+!Builtin prodRec: \forall A in U_0. \forall B in U_0. \forall C in U_0. (A -> B -> C) -> (A, B) -> C;
+!Builtin prodCons: \forall A in U_0. \forall B in U_0. A -> B -> (A, B);
 
 # Applying function to a pair / product
-prodAp: \forall A in U_0. \forall B in U_0. \forall C in U_0. ((A, B) -> C) -> A -> B -> C
-prodAp A B C f x y = f (prodCons x y)
+prodAp: \forall A in U_0. \forall B in U_0. \forall C in U_0. ((A, B) -> C) -> A -> B -> C;
+prodAp A B C f x y = f (prodCons x y);
 
 # Projection from a pair / product
-pr1: \forall A in U_0. \forall B in U_0. (A, B) -> A
-pr1 A B p = productRec A B A (\x in A. \y in B. x) p
+pr1: \forall A in U_0. \forall B in U_0. (A, B) -> A;
+pr1 A B p = productRec A B A (\x in A. \y in B. x) p;
 
-pr2: \forall A in U_0. \forall B in U_0. (A, B) -> B
-pr2 A B p = productRec A B B (\x in A. \y in B. y) p
+pr2: \forall A in U_0. \forall B in U_0. (A, B) -> B;
+pr2 A B p = productRec A B B (\x in A. \y in B. y) p;
 
-# prodUniq: \forall A in U_0. \forall B in U_0. \forall x in (A, B). Eq (A, B) (prodCons (pr1 x) (pr2 x)) x
-# prodUniq A B x = refl (A, B)
+# prodUniq: \forall A in U_0. \forall B in U_0. \forall x in (A, B). Eq (A, B) (prodCons (pr1 x) (pr2 x)) x;
+# prodUniq A B x = refl (A, B);

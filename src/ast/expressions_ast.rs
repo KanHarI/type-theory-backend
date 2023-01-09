@@ -32,8 +32,18 @@ pub enum ExpAst {
         left: Arc<ExpAst>,
         right: Arc<ExpAst>,
     }, // Equality =_t (identity) type, left =_t right
-    W {
-        base: Arc<ExpAst>,
-        body: Arc<ExpAst>,
-    }, // W (fixpoint, well founded) type
+    Merely {
+        t: Arc<ExpAst>,
+    }, // Merely (proposition) type
+    // Not included for now - will be added later. For now the natural numbers are
+    // defined axiomatically instead of being a first class citizen of the W type.
+    // W {
+    //     base: Arc<ExpAst>,
+    //     body: Arc<ExpAst>,
+    // }, // W (fixpoint, well founded) type
+    Nat,  // The natural numbers
+    Zero, // The natural number zero
+    Succ {
+        pred: Arc<ExpAst>,
+    }, // The successor of a natural number
 }

@@ -1,1 +1,1 @@
-!Axiom AOC: \forall R \in U. \forall f \in R. \exists! x \in dom(f). \forall y \in dom(f). f(x) = f(y)
+!Axiom AOC: \forall X in U_0. \forall A in (x -> U_0). \forall P in ()
