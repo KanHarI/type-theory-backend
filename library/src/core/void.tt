@@ -1,3 +1,6 @@
-# The type Void contains no elements
+# The type Void contains no elements.
+# A witness (element of the type) "P -> 0" means P is false.
 
-# TODO: define voidRec
+# ex falso quodlibet
+# Contradiction is a proof of anything
+voidRed: \forall C in U_0. Void -> C
