@@ -1,3 +1,9 @@
+// # Lowercase id - the identity function, does nothing
+//   id: forall A in U_0. A -> A
+//   id A x = x
+
+
+
 !Start
 :               CTX_EXT         []                              A: U_0;
 :a_var          VBLE            [A]                             A |- A: U_0;

@@ -1,7 +1,6 @@
 use std::sync::Arc;
 
 pub enum ExpAst {
-    Axiom,
     U {
         i: usize,
     }, // The i th type universe, starting with 0

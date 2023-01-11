@@ -3,5 +3,5 @@ use std::sync::Arc;
 
 pub struct ContextVar {
     pub parent_contexts: Vec<Arc<ContextVar>>,
-    pub _type: ExpAst,
+    pub _type: Arc<ExpAst>,
 }
