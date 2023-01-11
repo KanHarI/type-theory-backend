@@ -1,0 +1,13 @@
+!Start
+:               CTX_EXT     []                  P: U_0;
+:               VBLE        [P]                 P |- P: U_0;
+:               CTX_EXT     [P]                 x: P;
+:               VBLE        [P, x]              x |- x: P;
+:               CTX_EXT     [P]                 y: P;
+:               VBLE        [P, y]              y |- y: P;
+:               EQ_FORM     [P, x, y]           P x y |- Eq P x y: U_0;
+:               PI_INTRO    [_], [P, x]         P x |- \y in P. Eq P x y: forall y in P. U_0;
+:               PI_INTRO    [_], [P]            P |- \x in P. \y in P. Eq P x y: forall x in P. forall y in P. U_0;
+:isProp         PI_INTRO    [_]                 |- \P in U_0. \x in P. \y in P. Eq P x y: forall P in U_0. forall x in P. forall y in P. U_0;
+!Export isProp;
+!End

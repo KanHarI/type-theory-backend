@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 pub enum ExpAst {
+    Axiom,
     U {
         i: usize,
     }, // The i th type universe, starting with 0
@@ -8,8 +9,8 @@ pub enum ExpAst {
     Unit,      // The unit type
     Singleton, // The singleton, element of the unit type
     Func {
-        domain: Arc<ExpAst>,
-        codomain: Arc<ExpAst>,
+        base: Arc<ExpAst>,
+        body: Arc<ExpAst>,
     }, // The type of functions from domain to codomain
     Pi {
         base: Arc<ExpAst>,
@@ -32,18 +33,8 @@ pub enum ExpAst {
         left: Arc<ExpAst>,
         right: Arc<ExpAst>,
     }, // Equality =_t (identity) type, left =_t right
-    Merely {
-        t: Arc<ExpAst>,
-    }, // Merely (proposition) type
-    // Not included for now - will be added later. For now the natural numbers are
-    // defined axiomatically instead of being a first class citizen of the W type.
-    // W {
-    //     base: Arc<ExpAst>,
-    //     body: Arc<ExpAst>,
-    // }, // W (fixpoint, well founded) type
-    Nat,  // The natural numbers
-    Zero, // The natural number zero
-    Succ {
-        pred: Arc<ExpAst>,
-    }, // The successor of a natural number
+    W {
+        base: Arc<ExpAst>,
+        body: Arc<ExpAst>,
+    }, // W (fixpoint, well founded) type
 }

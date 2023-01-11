@@ -1,0 +1,8 @@
+!Start
+:Merely                 AXIOM                               Merely: U_0 -> U_0;
+!Export Merely
+:mere_lift              AXIOM                               mere_lift: forall A in U_0. A -> Merely A;
+!Export mere_lift
+:mere_equality          AXIOM                               mere_equality: forall A in U_0. forall x in Merely A. forall y in Merely A. Eq A x y;
+!Export mere_equality
+!End

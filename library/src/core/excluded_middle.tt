@@ -5,4 +5,4 @@
 # the HoTT book https://hott.github.io/book/hott-online-1353-g16a4bfa.pdf
 # section 3.2, "Sets and logic" -> "Propositions as types?"
 
-!Axiom LEM: \forall A in U_0. ((A -> 0) -> 0) -> isProp A -> A;
+!Axiom LEM: \forall A: U_0. isProp A -> ((A -> 0) -> 0) -> A;

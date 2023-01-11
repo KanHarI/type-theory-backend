@@ -1,0 +1,9 @@
+!Start
+:               CTX_EXT         []                              A: U_0;
+:a_var          VBLE            [A]                             A |- A: U_0;
+:               CTX_EXT         [:a_var]                        x: A;
+:base           VBLE            [x]                             x |- x: A;
+:a_id           PI_INTRO        [A], [:base]                    A |- \y in A. y: A -> A;
+:id             PI_INTRO        [], [:a_id]                     |- \T in U_0. \x in T. x: forall A in U_0. A -> A;
+!Export id;
+!End

@@ -1,5 +1,6 @@
 pub mod ast;
 pub mod tokenizer;
+pub mod ast_tests;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
@@ -17,4 +18,8 @@ mod tests {
 
     #[test]
     fn type_constructors() {}
+}
+
+pub fn main() {
+    println!("Hello, world!");
 }

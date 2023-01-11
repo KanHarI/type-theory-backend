@@ -1,0 +1,9 @@
+!Import         .merely;
+!Start;
+:AOC            AXIOM       AOC: forall X in U_0.
+        forall A in (X -> U_0).
+        forall P in (forall x in X. A x -> U_0).
+        (forall x in X. Merely (exists a in A x. P x a)) ->
+        Merely (exists g in (forall x in X. A x). forall x in X. P x (g x));
+!Export AOC;
+!End;
