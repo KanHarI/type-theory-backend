@@ -1,10 +1,13 @@
-pub enum Operations {
+pub enum OpcodeLabel {
     ////////////
     // AXIOMS //
     ////////////
 
     // Define a new axiom, extending the intuitionist constructive logic build into the type system
     // Used to define the law of excluded middle, axiom of choice, univalence axiom, etc.
+    // Of course automated provers are not allowed to use this operation, but it is useful for
+    // extending the logical system with new axioms such as the axiom of choice, and the law of
+    // excluded middle. In Homotopy Type Theory, univalence is also defined as an axiom.
     Axiom,
 
     ////////////////////////
@@ -15,6 +18,8 @@ pub enum Operations {
     // as well as introducing new types
 
     // Creates a new empty context
+    // The first opcode in any proof or definition
+    // []
     CtxEmp,
 
     // Extends the context with a type definition
@@ -25,13 +30,19 @@ pub enum Operations {
     // [Context, a: X] => [Context, a: X] |- a: X
     Vble,
 
+    // Create a new variable equal to another expression
+    // [Context, a: X] => [Context, a: X] |- b === a: X
+    VbleEq,
+
     // Substitution
     // [Context1] |- a: A, [Context1, x: A, Context2] |- b: B => [Context1, Context2[a/x]] |- b[a/x]: B[a/x]
+    // Note that this opcode requires subexpression highlighting
     Subst,
 
-    // Weakening of a structure (probably not necessary in a DAG context formulation?)
-    // [Context1] |- A: U, [Context1, Context2] |- b: B => [Context1, x: A, Context2] |- b: B
-    Wkg,
+    // Highlight a subexpression
+    // [Context] |- (\a in A. a) b: A => [0, 0] => [Context] |- (\a in ($ A). a) b: A
+    // This opcode takes an expression and an index and, and highlights the subexpression at the index
+    High,
 
     /////////////////////////
     // UNIVERSE OPERATIONS //
@@ -45,6 +56,21 @@ pub enum Operations {
     // is part of U_0 ("ordinary types"), and it is also the type of U_0 itself
     // Universes are required to abstract over types while preventing
     // self reference paradoxes like Russel's paradox
+    //
+    // In the future, after defining the ordinals, we may want to introduce
+    // a function that takes an ordinal and returns the corresponding universe
+    // Universe === \w in Ord. (LT w kappa) -> U_w: Ord -> U_1 -> U_kappa
+    // Where kappa is an ordinal of a large inaccessible cardinal, and LT is the
+    // less than relation on ordinals.
+    // Such a function would need axiomatic justification
+    //
+    // In that case we would probably also want to define
+    // UComul === \i in Ord. \j in Ord. (LEQ i j) -> \T in U_i. T:
+    //                          forall i in Ord. forall j in Ord. U_1 -> U_i -> U_j
+    // Where LEQ is the ordinal less than or equal to relation.
+    // The signature of LEQ is Ord -> Ord -> U_1, and not - as one might expect - Ord -> Ord -> U_0
+    // This is because the ordinals are too large to be part of U_0,
+    // making them and functions between them a part of U_1
 
     // Introduction of a new universe
     // [Context] => [Context] |- U_i: U_(i+1)
@@ -62,7 +88,7 @@ pub enum Operations {
     // When B depends on x, this is a dependent function type
 
     // Form a dependent function type
-    // [Context] |- A: U, [Context, x: A] |- B: U => [Context] |- forall x: A. B: U
+    // [Context] |- A: U, [Context, x: A] |- B: U => [Context] |- forall x in A. B: U
     PiForm,
 
     // Creates an element of a dependent function type

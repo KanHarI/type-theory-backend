@@ -1,5 +1,6 @@
 pub mod ast;
 pub mod ast_tests;
+pub mod operations;
 pub mod tokenizer;
 
 pub fn add(left: usize, right: usize) -> usize {
