@@ -13,7 +13,7 @@ pub enum OpcodeLabel {
     ////////////////////////
     // CONTEXT OPERATIONS //
     ////////////////////////
-    // Context operations are used to define the scope of a variable,
+    // Context opcodes are used to define the scope of a variable,
     // and to define the type of a variable,
     // as well as introducing new types
 

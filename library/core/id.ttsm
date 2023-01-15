@@ -1,0 +1,10 @@
+; Proving the existence of the identity function
+(1)     U_INTRO         0                       ; [] |- U_0: U_1
+(2)     CTX_EXT         A           (1)         ; [A: U_0]
+(3)     CTX_EXT         a           (2)         ; [A: U_0, a: A]
+(4)     VBLE            (3)                     ; [A: U_0, a: A] |- a: A
+(5)     HIGH            (4)         [0]         ; [A: U_0, a: A] |- $ a: A
+(6)     PI_INTRO        (5)         (4)         ; [A: U_0] |- (\a in A. a): A -> A
+(7)     HIGH            (6)         [0]         ; [A: U_0] |- $ (\a in A. a): A -> A
+(8)     PI_INTRO        (7)         (2)         ; [] |- (\A in U_0. \a in A. a): forall T in U_0. (T -> T)
+(9)     EXPORT          (8)         !id
