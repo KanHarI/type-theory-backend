@@ -1,0 +1,56 @@
+; or
+(1)         IMPORT          core.universe_base.u0               ;   {} |- U_0: U_1
+(2)         CTX_EXT         A           (1)                     ;   {A: U_0}
+(3)         VBLE            (2)                                 ;   {A: U_0} |- A: U_0
+(4)         CTX_EXT         B           (1)                     ;   {B: U_0}
+(5)         VBLE            (4)                                 ;   {B: U_0} |- B: U_0
+(6)         SUM_FORM        (3)         (5)                     ;   {A: U_0, B: U_0} |- A + B: U_0
+(7)         PI_INTRO        (6)         (5)                     ;   {A: U_0} |- \B in U_0. A + B: U_0 -> U_0
+(8)         PI_INTRO        (7)         (3)                     ;   {} |- \A in U_0. \B in U_0. A + B: U_0 -> U_0 -> U_0
+(9)         EXPORT          (8)         !or                     ;   or === \A in U_0. \B in U_0. A + B: U_0 -> U_0 -> U_0
+; or is a "type level function", receiving two types and
+; returning a type representing the logical operation
+
+; if A, then A or B
+(10)        CTX_EXT         a           (3)                     ;   {A: U_0, a: A}
+(11)        VBLE            (10)                                ;   {A: U_0, a: A} |- a: A
+(12)        SUM_INTRO_L     (3)         (5)         (11)        ;   {A: U_0, B: U_0, a: A} |- inl a: A + B
+(13)        PI_INTRO        (12)        (11)                    ;   {A: U_0, B: U_0} |- \a in A. inl a: A -> A + B
+(14)        PI_INTRO        (13)        (5)
+    ;   {A: U_0} |- \B in U_0. \a in A. inl a: forall B in U_0. A -> A + B
+(15)        PI_INTRO        (14)        (3)
+    ;   {} |- \A in U_0. \B in U_0. \a in A. inl a: A + B: forall A in U_0. forall B in U_0. A -> A + B
+(16)        EXPORT          (15)        !if_a_then_a_or_b
+    ;   if_a_then_a_or_b === \A in U_0. \B in U_0. \a in A. inl a: A + B: forall A in U_0. forall B in U_0. A -> A + B
+
+; if_a_then_a_or_b is the known theorem that if A, then A or B
+
+; if B, then A or B
+(17)        CTX_EXT         b           (5)                     ;   {B: U_0, b: B}
+(18)        VBLE            (17)                                ;   {B: U_0, b: B} |- b: B
+(19)        SUM_INTRO_R     (3)         (5)         (18)        ;   {A: U_0, B: U_0, b: B} |- inr b: A + B
+(20)        PI_INTRO        (19)        (18)                    ;   {A: U_0, B: U_0} |- \b in B. inr b: B -> A + B
+(21)        PI_INTRO        (20)        (5)
+    ;   {A: U_0} |- \B in U_0. \b in B. inr b: forall B in U_0. B -> A + B
+(22)        PI_INTRO        (21)        (3)
+    ;   {} |- \A in U_0. \B in U_0. \b in B. inr b: A + B: forall A in U_0. forall B in U_0. B -> A + B
+(23)        EXPORT          (22)        !if_b_then_a_or_b
+    ;   if_b_then_a_or_b === \A in U_0. \B in U_0. \b in B. inr b: A + B: forall A in U_0. forall B in U_0. B -> A + B
+
+; if A or B, then B or A
+(24)        CTX_EXT         c           (6)                     ;   {A: U_0, B: U_0, c: A + B}
+(25)        VBLE            (24)                                ;   {A: U_0, B: U_0, c: A + B} |- c: A + B
+(26)        SUM_FORM        (5)         (3)                     ;   {A: U_0, B: U_0} |- B + A: U_0
+(27)        SUM_ELIM        (26)        (12)        (19)        (25)
+    ;   {A: U_0, B: U_0, c: A + B} |- ind_sum A B (\_. B + A) (\a in A. inl a) (\b in B. inr b) c: B + A
+    ;   case analysis on c:
+    ;       if c is inl a, then inr a
+    ;       if c is inr b, then inl b
+(28)        PI_INTRO        (27)        (25)
+    ;   {A: U_0, B: U_0} |- \c in A + B. ind_sum A B (\_. B + A) (\a in A. inl a) (\b in B. inr b) c: A + B -> B + A
+(29)        PI_INTRO        (28)        (5)
+    ;   {A: U_0} |- \B in U_0. \c in A + B. ind_sum A B (\_. B + A) (\a in A. inl a) (\b in B. inr b) c: forall B in U_0. A + B -> B + A
+(30)        PI_INTRO        (29)        (3)
+    ;   {} |- \A in U_0. \B in U_0. \c in A + B. ind_sum A B (\_. B + A) (\a in A. inl a) (\b in B. inr b) c: A + B: forall A in U_0. forall B in U_0. A + B -> B + A
+(31)        EXPORT          (30)        !if_a_or_b_then_b_or_a
+    ;   if_a_or_b_then_b_or_a === \A in U_0. \B in U_0. \c in A + B. ind_sum A B (\_. B + A) (\a in A. inl a) (\b in B. inr b) c: A + B: forall A in U_0. forall B in U_0. A + B -> B + A

@@ -1,9 +1,7 @@
 use crate::opcodes::opcode_labels::OpcodeLabel;
 use crate::opcodes::opcode_trait::OpcodeTrait;
 
-pub struct Axiom {
-
-}
+pub struct Axiom {}
 
 impl OpcodeTrait for Axiom {
     fn opcode_label(&self) -> OpcodeLabel {

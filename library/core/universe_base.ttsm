@@ -1,0 +1,4 @@
+(1)         U_INTRO         0                       ;   {} |- U_0: U_1
+(2)         EXPORT          (1)             !u0     ;   u0 === U_0: U_1
+(3)         U_INTRO         1                       ;   {} |- U_1: U_2
+(4)         EXPORT          (3)             !u1     ;   u1 === U_1: U_2

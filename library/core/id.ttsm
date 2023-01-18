@@ -1,12 +1,11 @@
 ; Proving the existence of the identity function
 ; Everything after the semicolon is a comment
+;
 (1)     U_INTRO         0                       ; [] |- U_0: U_1
 (2)     CTX_EXT         A           (1)         ; [A: U_0]
 (3)     VBLE            (2)                     ; [A: U_0] |- [A: U_0]
 (4)     CTX_EXT         a           (3)         ; [A: U_0, a: A]
 (5)     VBLE            (4)                     ; [A: U_0, a: A] |- a: A
-(6)     HIGH            (5)         [0]         ; [A: U_0, a: A] |- $ a: A
-(7)     PI_INTRO        (6)         (5)         ; [A: U_0] |- (\a in A. a): A -> A
-(8)     HIGH            (7)         [0]         ; [A: U_0] |- $ (\a in A. a): A -> A
-(9)     PI_INTRO        (8)         (3)         ; [] |- (\A in U_0. \a in A. a): forall T in U_0. (T -> T)
-(10)    EXPORT          (8)         !id         ; !id === (\A in U_0. \a in A. a): forall T in U_0. (T -> T)
+(6)     PI_INTRO        (5)         (5)         ; [A: U_0] |- (\a in A. a): A -> A
+(7)     PI_INTRO        (6)         (3)         ; [] |- (\A in U_0. \a in A. a): forall T in U_0. (T -> T)
+(8)     EXPORT          (7)         !id         ; !id === (\A in U_0. \a in A. a): forall T in U_0. (T -> T)
