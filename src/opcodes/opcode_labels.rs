@@ -20,7 +20,7 @@ pub enum OpcodeLabel {
     // Creates a new empty context
     // The first opcode in any proof or definition
     // []
-    CtxEmp,
+    // CtxEmp,
 
     // Extends the context with a type definition
     // [Context] |- A: U => [Context, x: A]
@@ -145,8 +145,9 @@ pub enum OpcodeLabel {
     PlusIntroL,
     PlusIntroR,
     PlusElim,
-    PlusCompL,
-    PlusCompR,
+    // PlusCompL,
+    // PlusCompR,
+    PlusComp,
 
     /////////////////////////
     // VOID (0) OPERATIONS //
@@ -201,6 +202,16 @@ pub enum OpcodeLabel {
     EqIntro,
     EqElim,
     EqComp,
+
+    /////////////////////
+    // NATURAL NUMBERS //
+    /////////////////////
+
+    NatForm,
+    NatIntroZ,
+    NatIntroS,
+    NatElim,
+    NatComp,
 
     /////////////////////////
     // HOMOTOPY OPERATIONS //
